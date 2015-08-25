@@ -10,7 +10,7 @@ namespace ConsoleApplication1
     {
         static void Main(string[] args)
         {
-
+            
             Deck deck = new Deck();
 
             deck.PrintDeck();
