@@ -16,13 +16,21 @@ namespace ConsoleApplication1
             //    deck.PrintDeck();
             deck.Shuffle();
             //    deck.PrintDeck();
-            for (int x = 0; x < 50; x++) { 
+            Console.Clear();
+            int y = 0;
+            while (y < 649739) {
+            deck.RealShuffle();
+            for (int x = 0; x < 5; x++) { 
             deck.DealCard();
+            
+                    y++;
+                }
+                deck.CheckForRoyalInSpades();
+                deck.CheckForRoyalInHearts();
+                deck.CheckForRoyalInDiamonds();
+                deck.CheckForRoyalInClubs();
+                deck = new Deck();
             }
-            Console.WriteLine("------DISCARDS-----");
-            deck.PrintDiscards();
-            Console.WriteLine("------DISCARDS-----");
-            deck.CheckForRoyal();
         }
     }
 }

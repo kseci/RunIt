@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -57,6 +58,22 @@ namespace ConsoleApplication1
                 CardDeck[n] = value;
             }
         }
+        public void RealShuffle()
+        {
+            RNGCryptoServiceProvider provider = new RNGCryptoServiceProvider();
+            int n = CardDeck.Count;
+            while (n > 1)
+            {
+                byte[] box = new byte[1];
+                do provider.GetBytes(box);
+                while (!(box[0] < n * (Byte.MaxValue / n)));
+                int k = (box[0] % n);
+                n--;
+                Card value = CardDeck[k];
+                CardDeck[k] = CardDeck[n];
+                CardDeck[n] = value;
+            }
+        }
         public void DealCard()
         {
             Card c = CardDeck[0];
@@ -81,7 +98,7 @@ namespace ConsoleApplication1
         {
                     CardDeck.RemoveAll(delegate (Card x) { return x.suit == suit && x.face == face; });
         }
-        public void CheckForRoyal()
+        public void CheckForRoyalInSpades()
         {
             int counter = 0;
             foreach (Card c in DiscardDeck)
@@ -93,9 +110,54 @@ namespace ConsoleApplication1
             }
             if (counter >= 5)
             {
-                Console.WriteLine("RoyalFlush");
+                Console.WriteLine("RoyalFlush in spades!");
             }
         }
-        
+        public void CheckForRoyalInHearts()
+        {
+            int counter = 0;
+            foreach (Card c in DiscardDeck)
+            {
+                if (c.suit == "Hearts" && c.face == "Ten" || c.suit == "Hearts" && c.face == "Jack" || c.suit == "Hearts" && c.face == "Queen" || c.suit == "Hearts" && c.face == "King" || c.suit == "Hearts" && c.face == "Ace")
+                {
+                    counter++;
+                }
+            }
+            if (counter >= 5)
+            {
+                Console.WriteLine("RoyalFlush in hearts!");
+            }
+        }
+        public void CheckForRoyalInDiamonds()
+        {
+            int counter = 0;
+            foreach (Card c in DiscardDeck)
+            {
+                if (c.suit == "Diamonds" && c.face == "Ten" || c.suit == "Diamonds" && c.face == "Jack" || c.suit == "Diamonds" && c.face == "Queen" || c.suit == "Diamonds" && c.face == "King" || c.suit == "Diamonds" && c.face == "Ace")
+                {
+                    counter++;
+                }
+            }
+            if (counter >= 5)
+            {
+                Console.WriteLine("RoyalFlush in Diamonds!");
+            }
+        }
+        public void CheckForRoyalInClubs()
+        {
+            int counter = 0;
+            foreach (Card c in DiscardDeck)
+            {
+                if (c.suit == "Clubs" && c.face == "Ten" || c.suit == "Clubs" && c.face == "Jack" || c.suit == "Clubs" && c.face == "Queen" || c.suit == "Clubs" && c.face == "King" || c.suit == "Clubs" && c.face == "Ace")
+                {
+                    counter++;
+                }
+            }
+            if (counter >= 5)
+            {
+                Console.WriteLine("RoyalFlush in Clubs!");
+            }
+        }
+
     }
 }
