@@ -10,15 +10,19 @@ namespace ConsoleApplication1
     {
         static void Main(string[] args)
         {
-            
-
             Deck deck = new Deck();
-
             deck.PrintDeck();
-
-            deck.Equals("Seven");
-            
-
+            //     deck.DeleteCard("Hearts", "Five");
+            //    deck.PrintDeck();
+            deck.Shuffle();
+            //    deck.PrintDeck();
+            for (int x = 0; x < 50; x++) { 
+            deck.DealCard();
+            }
+            Console.WriteLine("------DISCARDS-----");
+            deck.PrintDiscards();
+            Console.WriteLine("------DISCARDS-----");
+            deck.CheckForRoyal();
         }
     }
 }
