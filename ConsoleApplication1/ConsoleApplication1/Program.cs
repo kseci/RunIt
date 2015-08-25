@@ -14,6 +14,8 @@ namespace ConsoleApplication1
             Deck deck = new Deck();
 
             deck.PrintDeck();
+
+            deck.Equals("Seven");
             
 
         }
