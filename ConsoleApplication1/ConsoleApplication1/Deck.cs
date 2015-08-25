@@ -8,50 +8,63 @@ namespace ConsoleApplication1
 {
     class Deck
     {
-        
+        public List<Card> CardDeck { get; set; }
+
         private const int NUMBER_OF_CARDS = 52;
-        private Card[] deck;
+
+        private string[] faces = {"Ace", "Duece", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten",
+                                "Jack", "Queen", "King"};
+        private string[] suits = { "Hearts", "Clubs", "Diamonds", "Spades" };
         private int currentCard;
         private Random ranNum;
 
+
         public Deck()
         {
-            string[] faces = {"Ace", "Duece", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten",
-                                "Jack", "Queen", "King"};
-            string[] suits = {"Hearts", "Clubs", "Diamonds", "Spades" };
-
-            deck = new Card[NUMBER_OF_CARDS];
-
-            currentCard = 0;
-
-            ranNum = new Random();
-
-            for(int count = 0; count < deck.Length; count++)
-            {
-                deck[count] = new Card(faces[count % 11], suits[count / 13]);
-            }
+            CardDeck = GetListOfCards();
 
         }
-        public void Shuffle()
+        public List<Card> GetListOfCards()
         {
-            currentCard = 0;
-            for (int first = 0; first < deck.Length; first++)
+            List<Card> cards = new List<Card>();
+
+            foreach (string suit in suits)
             {
-                int second = ranNum.Next(NUMBER_OF_CARDS);
-                Card temp = deck[second];
-                deck[first] = deck[second];
-                deck[second] = temp;
+                foreach (string face in faces)
+                {
+                    cards.Add(new Card(suit,face));
+                }
             }
+
+            return cards;
         }
-        public Card DealCard()
+        //public void Shuffle()
+        //{
+        //    currentCard = 0;
+        //    for (int first = 0; first < deck.Length; first++)
+        //    {
+        //        int second = ranNum.Next(NUMBER_OF_CARDS);
+        //        Card temp = deck[second];
+        //        deck[first] = deck[second];
+        //        deck[second] = temp;
+        //    }
+        //}
+        //public Card DealCard()
+        //{
+        //    if (currentCard < deck.Length)
+        //    {
+        //        return deck[currentCard++];
+        //    }
+        //    else
+        //    {
+        //        return null;
+        //    }
+        //}
+        public void PrintDeck()
         {
-            if (currentCard < deck.Length)
+            foreach (Card c in CardDeck)
             {
-                return deck[currentCard++];
-            }
-            else
-            {
-                return null;
+                Console.WriteLine(c.ToString());
             }
         }
         
