@@ -16,6 +16,7 @@ namespace ConsoleApplication1
             //    deck.PrintDeck();
             deck.Shuffle();
             //    deck.PrintDeck();
+           
             Console.Clear();
             int y = 0;
             while (y < 649739) {
