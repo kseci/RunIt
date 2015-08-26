@@ -18,6 +18,7 @@ namespace ConsoleApplication1
                                 "Jack", "Queen", "King"};
         private string[] suits = { "Hearts", "Clubs", "Diamonds", "Spades" };
         private int currentCard;
+        private int totalRoyals;
         private Random ranNum = new Random();
 
 
@@ -110,7 +111,8 @@ namespace ConsoleApplication1
             }
             if (counter >= 5)
             {
-                Console.WriteLine("RoyalFlush in spades!");
+                Console.WriteLine("RoyalFlush in Spades!");
+                this.totalRoyals += 1;
             }
         }
         public void CheckForRoyalInHearts()
@@ -125,7 +127,8 @@ namespace ConsoleApplication1
             }
             if (counter >= 5)
             {
-                Console.WriteLine("RoyalFlush in hearts!");
+                Console.WriteLine("RoyalFlush in Hearts!");
+                this.totalRoyals += 1;
             }
         }
         public void CheckForRoyalInDiamonds()
@@ -141,6 +144,7 @@ namespace ConsoleApplication1
             if (counter >= 5)
             {
                 Console.WriteLine("RoyalFlush in Diamonds!");
+                this.totalRoyals += 1;
             }
         }
         public void CheckForRoyalInClubs()
@@ -156,6 +160,35 @@ namespace ConsoleApplication1
             if (counter >= 5)
             {
                 Console.WriteLine("RoyalFlush in Clubs!");
+                this.totalRoyals += 1;
+            }
+        }
+        public void CheckForRoyal()
+        {
+            Deck deck = new Deck();
+            int y = 0;
+            while (y < 649739)
+            {
+                RealShuffle();
+                for (int x = 0; x < 5; x++)
+                {
+                    deck.DealCard();
+
+                    
+                }
+                y++;
+                CheckForRoyalInSpades();
+                CheckForRoyalInHearts();
+                CheckForRoyalInDiamonds();
+                CheckForRoyalInClubs();
+                deck = new Deck();
+            }
+        }
+        public void PrintRoyals()
+        {
+            while (true) {
+            Console.Clear();
+            Console.WriteLine("hallo");
             }
         }
 

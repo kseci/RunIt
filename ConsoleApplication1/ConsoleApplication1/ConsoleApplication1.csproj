@@ -35,6 +35,8 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -44,8 +46,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Card.cs" />
-    <Compile Include="Deck.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="ThreadManager.cs" />
+    <Compile Include="Deck.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
